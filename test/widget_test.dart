@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_states_provider/Providers/counter_provider.dart';
+import 'package:flutter_states_provider/Providers/user_provider.dart';
 import 'package:flutter_states_provider/main.dart';
-import 'package:flutter_states_provider/counter_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {

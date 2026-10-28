@@ -47,149 +47,158 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
-        title: Text(themeProvider.title),
+        title: Text(
+          themeProvider.title,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.amber,
         foregroundColor: Colors.black,
+        centerTitle: false,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Cuenta normal',
-              style: TextStyle(
-                fontSize: 18,
-                color: isDarkMode ? Colors.white : Colors.black,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Cuenta normal',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '${counterProvider.counter}',
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.w500,
-                color: isDarkMode ? Colors.white : Colors.black,
+              const SizedBox(height: 8),
+              Text(
+                '${counterProvider.counter}',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.w500,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Cuenta doble',
-              style: TextStyle(
-                fontSize: 18,
-                color: isDarkMode ? Colors.white : Colors.black,
+              const SizedBox(height: 20),
+              Text(
+                'Cuenta doble',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '${counterProvider.doubleCounter}',
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.w500,
-                color: isDarkMode ? Colors.white : Colors.black,
+              const SizedBox(height: 8),
+              Text(
+                '${counterProvider.doubleCounter}',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.w500,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 28),
-            SizedBox(
-              width: 260,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: showTitleDialog,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.shade400,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: 28),
+              SizedBox(
+                width: 300,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: showTitleDialog,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade400,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Cambiar título',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
-                child: const Text(
-                  'Cambiar título',
-                  style: TextStyle(fontSize: 16),
-                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: 260,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () => context.read<ThemeProvider>().changeTheme(),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.shade400,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: 300,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () => context.read<ThemeProvider>().changeTheme(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade400,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    isDarkMode ? 'Tema claro' : 'Tema oscuro',
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
-                child: Text(
-                  isDarkMode ? 'Tema claro' : 'Tema oscuro',
-                  style: const TextStyle(fontSize: 16),
-                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: 260,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<CounterProvider>().decrease();
-                  context.read<CounterProvider>().decreaseDouble();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.shade400,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: 300,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<CounterProvider>().decrease();
+                    context.read<CounterProvider>().decreaseDouble();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade400,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Decrementar',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
-                child: const Text(
-                  'Decrementar',
-                  style: TextStyle(fontSize: 16),
-                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: 260,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<CounterProvider>().increment();
-                  context.read<CounterProvider>().incrementDouble();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.shade400,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: 300,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<CounterProvider>().increment();
+                    context.read<CounterProvider>().incrementDouble();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade400,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Incrementar',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
-                child: const Text(
-                  'Incrementar',
-                  style: TextStyle(fontSize: 16),
-                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: 260,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () => context.read<CounterProvider>().reset(),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.shade400,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: 300,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () => context.read<CounterProvider>().reset(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade400,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Resetear',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
-                child: const Text(
-                  'Resetear',
-                  style: TextStyle(fontSize: 16),
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
